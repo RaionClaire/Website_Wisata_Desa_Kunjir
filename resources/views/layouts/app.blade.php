@@ -9,8 +9,7 @@
     <meta name="keywords" content="pariwisata, pantai, desa, lampung, lampung selatan">
     <meta name="author" content="Wisata Desa Kunjir">
 
-    <title>@yield('title', 'WISATA DESA KUNJIR')</title>
-
+    <title>@yield('title', 'Desa Wisata Kunjir')</title>
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +23,16 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased scroll-smooth">
+<body class="font-sans text-gray-900 antialiased scroll-smooth">
+    @include('layouts.navbar')
 
-    @yield('content')
+    <main class="min-h-screen">
+        @yield('content')
+    </main>
+
+    <footer class="bg-gray-900 text-white text-sm text-center py-8">
+        © {{ date('Y') }} Desa Wisata Kunjir — Lampung Selatan
+    </footer>
 
     @livewireScripts
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

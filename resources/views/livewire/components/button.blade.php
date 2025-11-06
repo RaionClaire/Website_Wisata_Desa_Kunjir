@@ -1,4 +1,10 @@
 @php
+    $variant = $variant ?? 'primary';
+    $size = $size ?? 'md';
+    $href = $href ?? '#';
+    $label = $label ?? $text ?? '';
+    $class = $class ?? '';
+    
     $baseClass = 'inline-block font-semibold rounded-full transition duration-300 ease-in-out shadow-lg';
     $colorClass = match ($variant) {
         'primary' => 'bg-primary hover:bg-secondary text-white',
