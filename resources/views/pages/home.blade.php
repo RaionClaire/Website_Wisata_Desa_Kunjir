@@ -4,6 +4,7 @@
 @section('activeLink', 'Beranda')
 
 @section('content')
+    @livewire('components.hero')
     <section class="container mx-auto py-16 px-4 my-8 md:my-2">
         <div class="flex flex-col md:flex-row items-center md:items-center gap-12 md:gap-16">
             <div class="md:w-1/2 text-center md:text-left">
