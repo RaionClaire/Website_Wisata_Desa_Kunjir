@@ -7,4 +7,6 @@
   @include('livewire.components.section-plan-trip')
   @include('livewire.components.section-articles')
   @include('livewire.components.section-faq')
+  @include('livewire.components.section-maps')
+  @include('livewire.components.section-weather-forecast')
 @endsection

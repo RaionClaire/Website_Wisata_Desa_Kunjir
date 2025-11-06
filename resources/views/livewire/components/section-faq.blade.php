@@ -3,14 +3,14 @@
 
   @php
     $faqs = [
-      ['q'=>'Bagaimana menuju Desa Kunjir?',
+      ['q'=>'Bagaimana cara menuju Desa Kunjir?',
        'a'=>'Dari Bandar Lampung menuju Kalianda (±2 jam), lanjut ke arah Gunung Rajabasa hingga Kunjir.'],
       ['q'=>'Kapan waktu terbaik berkunjung?',
-       'a'=>'Musim kemarau (Mei–Sep) untuk pantai & snorkeling; subuh untuk sunrise.'],
+       'a'=>'Musim kemarau (Mei–Sep) untuk pantai & snorkeling; subuh untuk mendapatkan sunrise.'],
       ['q'=>'Ada penginapan?',
-       'a'=>'Ada homestay warga & penginapan kecil di sekitar desa.'],
+       'a'=>'Ada homestay warga & penginapan di sekitar desa.'],
       ['q'=>'Apakah bisa sewa alat snorkeling?',
-       'a'=>'Umumnya tersedia sewa sederhana dari warga setempat.']
+       'a'=>'Tersedia sewa dari warga setempat.']
     ];
   @endphp
 

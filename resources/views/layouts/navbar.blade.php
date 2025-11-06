@@ -8,14 +8,14 @@
 
     <ul class="hidden md:flex gap-8 text-sm font-medium text-gray-700" id="navMenu">
       <li><a href="/" class="hover:text-green-700">Beranda</a></li>
-      <li><a href="/articles" class="hover:text-green-700">Artikel</a></li>
+      <li><a href="{{ route('articles.index') }}" class="hover:text-green-700">Artikel</a></li>
       <li><a href="#faq" class="hover:text-green-700">FAQ</a></li>
     </ul>
   </div>
 
   <ul class="md:hidden px-4 pb-4 space-y-2 hidden" id="navMenuMobile">
     <li><a href="/" class="block py-2">Beranda</a></li>
-    <li><a href="/articles" class="block py-2">Artikel</a></li>
+    <li><a href="{{ route('articles.index') }}" class="block py-2">Artikel</a></li>
     <li><a href="#faq" class="block py-2">FAQ</a></li>
   </ul>
 </nav>

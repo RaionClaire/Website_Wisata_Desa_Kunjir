@@ -11,15 +11,21 @@ class ArticleController extends Controller
 {
     public function index(Request $req)
     {
-        $artikel = Article::latest()->paginate(10);
-        return view('pages.article', compact('artikel'));
+        $articles = Article::where('status', 'published')
+            ->orderBy('published_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
+        
+        return view('pages.article', compact('articles'));
     }
 
     public function show($slug)
     {
-        $article = Article::all()->first(function ($item) use ($slug) {
-            return Str::slug($item->title) === $slug;
-        });
+        $article = Article::where('status', 'published')
+            ->get()
+            ->first(function ($item) use ($slug) {
+                return Str::slug($item->title) === $slug;
+            });
 
         if (!$article) {
             abort(404);
@@ -33,7 +39,12 @@ class ArticleController extends Controller
             cache()->put($cacheKey, true, now()->addHours(1));
         }
 
-        $latest = Article::latest()->take(5)->get();
+        $latest = Article::where('status', 'published')
+            ->orderBy('published_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+        
         $article->content = Markdown::convertToHtml($article->content);
 
         return view('pages.article-detail', compact('article', 'latest'));

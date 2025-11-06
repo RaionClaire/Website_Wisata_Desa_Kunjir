@@ -13,12 +13,12 @@
 
     <div class="col-span-12 md:col-start-7 md:col-end-11 md:row-start-1 md:row-end-2
                 z-10">
-      <div class="bg-green-800 text-white rounded-2xl p-8 shadow-xl">
+      <div class="bg-[#1d764a] text-white rounded-md p-8 shadow-xl">
         <h2 class="text-3xl font-bold mb-4">Jelajahi Desa Kunjir</h2>
         <p class="text-sm leading-relaxed mb-6">
           Menghadap Teluk Lampung di kaki Gunung Rajabasa, Kunjir menawarkan
           pantai pasir putih, snorkeling terumbu karang, sunrise menawan, dan
-          keramahan masyarakat pesisir.
+          kearifan khas daerah pesisir.
         </p>
         @include('livewire.components.button', ['href'=>'#plan', 'text'=>'Pelajari lebih lanjut'])
       </div>

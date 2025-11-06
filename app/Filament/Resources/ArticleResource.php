@@ -41,6 +41,7 @@ class ArticleResource extends Resource
 
                 FileUpload::make('thumbnail_path')
                     ->label('Gambar Sampul / Thumbnail')
+                    ->disk('public')
                     ->directory('articles/thumbnails')
                     ->image()
                     ->imageEditor()

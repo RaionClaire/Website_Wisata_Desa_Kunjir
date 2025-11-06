@@ -3,7 +3,7 @@
     <div class="absolute inset-0 bg-black/30"></div>
 
     <div class="relative z-20 flex flex-col items-center justify-center text-center h-full px-6">
-        <h1 class="text-white font-extrabold text-4xl md:text-6xl lg:text-7xl leading-tight max-w-4xl">
+        <h1 class="text-white font-extrabold text-3xl md:text-6xl lg:text-7xl leading-tight max-w-4xl">
             Mari menjelajahi keindahan wisata Desa Kunjir
         </h1>
     </div>
