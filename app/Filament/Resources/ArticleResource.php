@@ -38,7 +38,8 @@ class ArticleResource extends Resource
                     ->label('Penulis')
                     ->default(fn() => Auth::user()?->name)
                     ->maxLength(100)
-                    ->nullable(),
+                    ->nullable()
+                    ->disabled(),
 
                 FileUpload::make('thumbnail_path')
                     ->label('Gambar Sampul / Thumbnail')

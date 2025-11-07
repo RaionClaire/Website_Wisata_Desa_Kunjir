@@ -6,7 +6,6 @@ use App\Filament\Resources\ArticleResource;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Support\HtmlString;
 
 class EditArticle extends EditRecord
 {
@@ -20,11 +19,9 @@ class EditArticle extends EditRecord
         ];
     }
 
-    public static function getEditRecordSubheadingUsing(): ?\Closure
+    public function getSubheading(): ?string
     {
-        return fn($record) => new HtmlString(
-            'Edit <b><i>' . e($record->title) . '</i></b>'
-        );
+        return 'Perbarui Artikel untuk ' . $this->record->title;
     }
 
     protected function getSaveFormAction(): Action
