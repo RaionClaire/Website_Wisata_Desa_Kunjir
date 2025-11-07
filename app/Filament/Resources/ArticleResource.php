@@ -62,13 +62,14 @@ class ArticleResource extends Resource
                         MarkdownEditor::make('content')
                             ->label('Konten Artikel')
                             ->required()
+                            ->live(debounce: 500)
                             ->columnSpan(1),
 
                         View::make('livewire.components.markdown-preview')
                             ->label('Preview')
                             ->visible(fn($get) => filled($get('content')))
                             ->viewData(fn($get) => [
-                                'html' => Str::markdown($get('content')),
+                                'html' => Str::markdown($get('content') ?? ''),
                             ])
                             ->columnSpan(1),
                     ])
