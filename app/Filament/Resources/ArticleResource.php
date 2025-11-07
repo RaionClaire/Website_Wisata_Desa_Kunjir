@@ -7,10 +7,11 @@ use App\Models\Article;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
-use Filament\Forms\Components\{TextInput, FileUpload, Hidden, MarkdownEditor, Select, DateTimePicker};
-use Filament\Tables\Columns\{TextColumn, BadgeColumn};
+use Filament\Forms\Components\{TextInput, FileUpload, Hidden, MarkdownEditor, Select, DateTimePicker, Grid, View};
+use Filament\Tables\Columns\{TextColumn};
 use Filament\Tables\Actions\{EditAction, DeleteAction, BulkActionGroup, DeleteBulkAction};
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ArticleResource extends Resource
 {
@@ -37,25 +38,40 @@ class ArticleResource extends Resource
                     ->label('Penulis')
                     ->default(fn() => Auth::user()?->name)
                     ->maxLength(100)
-                    ->nullable(),
+                    ->nullable()
+                    ->disabled(),
 
                 FileUpload::make('thumbnail_path')
                     ->label('Gambar Sampul / Thumbnail')
                     ->disk('public')
                     ->directory('articles/thumbnails')
                     ->image()
-                    ->imageEditor()
+                    ->imageEditor(fn($livewire) => $livewire instanceof CreateArticle)
+                    ->maxSize(5120)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->nullable(),
-
                 TextInput::make('video_url')
                     ->label('Link Video (Opsional)')
                     ->url()
                     ->placeholder('https://youtube.com/... atau link video lainnya')
                     ->nullable(),
 
-                MarkdownEditor::make('content')
-                    ->label('Konten Artikel')
-                    ->required()
+                Grid::make()
+                    ->columns(2)
+                    ->schema([
+                        MarkdownEditor::make('content')
+                            ->label('Konten Artikel')
+                            ->required()
+                            ->columnSpan(1),
+
+                        View::make('livewire.components.markdown-preview')
+                            ->label('Preview')
+                            ->visible(fn($get) => filled($get('content')))
+                            ->viewData(fn($get) => [
+                                'html' => Str::markdown($get('content')),
+                            ])
+                            ->columnSpan(1),
+                    ])
                     ->columnSpanFull(),
 
                 Select::make('status')

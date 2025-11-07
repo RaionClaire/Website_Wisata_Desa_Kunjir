@@ -6,14 +6,12 @@
 @section('title', $article->title)
 
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 py-16 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-16 min-h-screen mt-6">
         <div class="grid lg:grid-cols-3 gap-8">
-            {{-- Main Article Content --}}
             <article class="lg:col-span-2">
-                {{-- Thumbnail --}}
                 @if ($article->thumbnail_path)
                     <img src="{{ asset('storage/' . $article->thumbnail_path) }}" alt="{{ $article->title }}"
-                        class="w-full h-96 object-cover rounded-2xl mb-6">
+                        class="w-full h-96 object-cover rounded-2xl mb-6 mt-8">
                 @endif
                 {{-- Meta Information --}}
                 <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
@@ -28,10 +26,9 @@
                     <span>{{ $article->views }} views</span>
                 </div>
 
-                {{-- Title --}}
                 <h1 class="text-4xl font-bold mb-6">{{ $article->title }}</h1>
 
-                {{-- Video (if exists) --}}
+                {{-- Check if video is exist --}}
                 @if ($article->video_url)
                     <div class="mb-6">
                         <div class="aspect-video rounded-2xl overflow-hidden bg-gray-200">
@@ -63,9 +60,12 @@
                 @endif
 
                 {{-- Content --}}
-                <div class="prose prose-lg max-w-none">
+                <div
+                    class="prose prose-sm md:prose-base lg:prose-lg max-w-none text-gray-800 leading-loose
+                        prose-h2:font-diplay prose-h2:font-bold prose-h2:text-3xl prose-h2:my-3 prose-p:my-6 font-sans mb-8">
                     {!! $article->content !!}
                 </div>
+
             </article>
 
             {{-- Sidebar - Latest Articles --}}
