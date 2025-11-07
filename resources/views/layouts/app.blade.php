@@ -23,8 +23,8 @@
     @livewireStyles
 </head>
 
-<body class="font-sans text-gray-900 antialiased scroll-smooth">
-    @include('layouts.navbar')
+<body class="font-sans text-gray-900 antialiased">
+    @include('livewire.components.navbar')
 
     <main class="min-h-screen">
         @yield('content')
