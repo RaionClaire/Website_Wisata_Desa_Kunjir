@@ -7,8 +7,8 @@
     
     $baseClass = 'inline-block font-semibold rounded-full transition duration-300 ease-in-out shadow-lg';
     $colorClass = match ($variant) {
-        'primary' => 'bg-primary hover:bg-secondary text-white',
-        'secondary' => 'bg-gray-800 hover:bg-gray-600 text-white',
+        'primary' => 'bg-green-700 hover:bg-green-800 text-white',
+        'secondary' => 'bg-white hover:bg-gray-200 text-green-700',
         'danger' => 'bg-red-600 hover:bg-red-500 text-white',
         default => 'bg-gray-300 hover:bg-gray-200 text-gray-800',
     };

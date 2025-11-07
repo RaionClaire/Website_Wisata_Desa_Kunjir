@@ -20,7 +20,12 @@
           pantai pasir putih, snorkeling terumbu karang, sunrise menawan, dan
           kearifan khas daerah pesisir.
         </p>
-        @include('livewire.components.button', ['href'=>'#plan', 'text'=>'Pelajari lebih lanjut'])
+        @include('livewire.components.button', [
+          'href' => '#plan', 
+          'label' => 'Pelajari lebih lanjut',
+          'variant' => 'secondary',
+          'size' => 'md'
+        ])
       </div>
     </div>
 

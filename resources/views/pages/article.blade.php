@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 @section('content')
   <div class="max-w-7xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold mb-8">Artikel Wisata</h1>
+    <h1 class="text-3xl font-bold mb-8">Artikel Desa Kunjir</h1>
     
     @if($articles->count() > 0)
       <div class="grid md:grid-cols-3 gap-8">
