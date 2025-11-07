@@ -69,43 +69,7 @@
             </article>
 
             {{-- Sidebar - Latest Articles --}}
-            <aside class="lg:col-span-1">
-                <div class="sticky top-24">
-                    <h3 class="text-xl font-bold mb-4">Artikel Terbaru</h3>
-                    <div class="space-y-4">
-                        @foreach ($latest as $latestArticle)
-                            @if ($latestArticle->id !== $article->id)
-                                <a href="{{ route('articles.show', Str::slug($latestArticle->title)) }}"
-                                    class="block group">
-                                    <div class="flex gap-3">
-                                        @if ($latestArticle->thumbnail_path)
-                                            <img src="{{ asset('storage/' . $latestArticle->thumbnail_path) }}"
-                                                alt="{{ $latestArticle->title }}"
-                                                class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
-                                        @endif
-                                        <div class="flex-1">
-                                            <h4
-                                                class="font-semibold text-sm group-hover:text-green-700 transition line-clamp-2">
-                                                {{ $latestArticle->title }}
-                                            </h4>
-                                            <p class="text-xs text-gray-500 mt-1">
-                                                {{ ($latestArticle->published_at ?? $latestArticle->created_at)->format('d M Y') }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endif
-                        @endforeach
-                    </div>
-
-                    <div class="mt-6">
-                        <a href="{{ route('articles.index') }}"
-                            class="block text-center bg-green-700 text-white py-2 px-4 rounded-lg hover:bg-green-800 transition">
-                            Lihat Semua Artikel
-                        </a>
-                    </div>
-                </div>
-            </aside>
+            @include('livewire.components.newest-article', ['excludeId' => $article->id])
         </div>
     </div>
 @endsection
