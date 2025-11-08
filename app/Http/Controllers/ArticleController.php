@@ -15,7 +15,7 @@ class ArticleController extends Controller
             ->orderBy('published_at', 'desc')
             ->orderBy('created_at', 'desc')
             ->paginate(12);
-        
+
         return view('pages.article', compact('articles'));
     }
 
@@ -36,7 +36,7 @@ class ArticleController extends Controller
 
         if (!cache()->has($cacheKey)) {
             $article->increment('views');
-            cache()->put($cacheKey, true, now()->addHours(1));
+            cache()->put($cacheKey, true, now()->addMinutes(15));
         }
 
         $latest = Article::where('status', 'published')
@@ -44,7 +44,7 @@ class ArticleController extends Controller
             ->orderBy('created_at', 'desc')
             ->take(5)
             ->get();
-        
+
         $article->content = Markdown::convertToHtml($article->content);
 
         return view('pages.article-detail', compact('article', 'latest'));

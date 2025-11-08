@@ -119,10 +119,10 @@ class ArticleResource extends Resource
                     ->label('Tayangan')
                     ->sortable(),
 
-                // TextColumn::make('published_at')
-                //     ->label('Dipublikasikan')
-                //     ->dateTime()
-                //     ->sortable(),
+                TextColumn::make('published_at')
+                    ->label('Dipublikasikan')
+                    ->dateTime()
+                    ->sortable(),
 
                 TextColumn::make('created_at')
                     ->label('Dibuat')

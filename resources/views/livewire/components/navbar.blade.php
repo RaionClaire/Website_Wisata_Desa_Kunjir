@@ -7,7 +7,7 @@
            px-6 md:px-10 py-4 z-50 transition-all duration-300 ease-in-out
            {{ $isHome ? 'bg-transparent text-white' : 'bg-white text-gray-900 shadow-sm' }}">
 
-    <div class="text-xl md:text-2xl font-semibold transition-colors duration-300 {{ $isHome ? 'text-white' : 'text-green-700' }}"
+    <div class="text-xl md:text-2xl font-bold transition-colors duration-300 {{ $isHome ? 'text-white' : 'text-green-700' }}"
         id="brandName">
         Wisata Desa Kunjir
     </div>
