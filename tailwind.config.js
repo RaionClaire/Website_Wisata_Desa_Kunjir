@@ -9,6 +9,11 @@ export default {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+    safelist: [
+        "animate-[fade1_15s_infinite]",
+        "animate-[fade2_15s_infinite]",
+        "animate-[fade3_15s_infinite]",
+    ],
     theme: {
         extend: {
             fontFamily: {
