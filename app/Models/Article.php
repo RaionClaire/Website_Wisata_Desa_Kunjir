@@ -28,6 +28,7 @@ class Article extends Model
         'content',
         'status',
         'published_at',
+        'tagline'
     ];
 
     /**

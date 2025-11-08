@@ -39,6 +39,7 @@ class ArticleResource extends Resource
                     ->default(fn() => Auth::user()?->name)
                     ->maxLength(100)
                     ->nullable()
+                    ->dehydrated()
                     ->disabled(),
 
                 FileUpload::make('thumbnail_path')
@@ -49,7 +50,9 @@ class ArticleResource extends Resource
                     ->imageEditor(fn($livewire) => $livewire instanceof CreateArticle)
                     ->maxSize(5120)
                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->nullable(),
+                    ->required(),
+
+
                 TextInput::make('video_url')
                     ->label('Link Video (Opsional)')
                     ->url()
@@ -75,14 +78,26 @@ class ArticleResource extends Resource
                     ])
                     ->columnSpanFull(),
 
-                Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        'draft' => 'Draft',
-                        'published' => 'Published',
-                    ])
-                    ->default('draft')
-                    ->required(),
+                Grid::make()
+                    ->columns(2)
+                    ->schema([
+                        Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'draft' => 'Draft',
+                                'published' => 'Published',
+                            ])
+                            ->default('draft')
+                            ->required(),
+
+                        Select::make('tagline')
+                            ->label('Tagline')
+                            ->default('artikel')
+                            ->options([
+                                'artikel' => 'Artikel',
+                                'informasi' => 'Informasi',
+                            ]),
+                    ]),
 
                 DateTimePicker::make('published_at')
                     ->label('Tanggal Publikasi')
@@ -117,11 +132,6 @@ class ArticleResource extends Resource
 
                 TextColumn::make('views')
                     ->label('Tayangan')
-                    ->sortable(),
-
-                TextColumn::make('published_at')
-                    ->label('Dipublikasikan')
-                    ->dateTime()
                     ->sortable(),
 
                 TextColumn::make('created_at')

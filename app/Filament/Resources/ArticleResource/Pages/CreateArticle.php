@@ -3,10 +3,10 @@
 namespace App\Filament\Resources\ArticleResource\Pages;
 
 use App\Filament\Resources\ArticleResource;
-use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Js;
+use Illuminate\Support\Facades\Auth;
 
 class CreateArticle extends CreateRecord
 {
@@ -60,5 +60,13 @@ class CreateArticle extends CreateRecord
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['author'] = Auth::user()->name;
+        $data['user_id'] = Auth::id();
+
+        return $data;
     }
 }

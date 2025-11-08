@@ -24,6 +24,7 @@ return new class extends Migration
 
             $table->longText('content');
             $table->enum('status', ['draft', 'published'])->default('draft');
+            $table->enum('tagline', ['artikel', 'informasi'])->default('artikel');
             $table->timestamp('published_at')->nullable();
 
             $table->timestamps();
