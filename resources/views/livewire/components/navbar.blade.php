@@ -7,7 +7,7 @@
            px-6 md:px-10 py-4 z-50 transition-all duration-300 ease-in-out
            {{ $isHome ? 'bg-transparent text-white' : 'bg-white text-gray-900 shadow-sm' }}">
 
-    <div class="text-xl md:text-2xl font-bold transition-colors duration-300 {{ $isHome ? 'text-white' : 'text-green-700' }}"
+    <div class="text-xl md:text-2xl font-bold transition-colors duration-300 {{ $isHome ? 'text-white' : 'text-emerald-600' }}"
         id="brandName">
         Wisata Desa Kunjir
     </div>
@@ -16,19 +16,19 @@
         <ul class="flex gap-8 list-none">
             <li>
                 <a href="/"
-                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-green-700 transition-colors duration-300">
+                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-emerald-600 transition-colors duration-300">
                     Beranda
                 </a>
             </li>
             <li>
                 <a href="{{ route('articles.index') }}"
-                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-green-700 transition-colors duration-300">
+                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-emerald-600 transition-colors duration-300">
                     Artikel
                 </a>
             </li>
             <li>
                 <a href="#faq"
-                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-green-700 transition-colors duration-300">
+                    class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-emerald-600 transition-colors duration-300">
                     FAQ
                 </a>
             </li>
@@ -46,10 +46,11 @@
     <div id="mobileMenu"
         class="hidden fixed inset-0 bg-white text-gray-900 opacity-0 pointer-events-none transition-all duration-200 z-40 flex flex-col items-center justify-center gap-8 text-2xl font-semibold">
         <ul class="flex flex-col items-center gap-8 list-none">
-            <li><a href="/" class="block hover:text-green-700 transition-colors">Beranda</a></li>
-            <li><a href="{{ route('articles.index') }}" class="block hover:text-green-700 transition-colors">Artikel</a>
+            <li><a href="/" class="block hover:text-emerald-600 transition-colors">Beranda</a></li>
+            <li><a href="{{ route('articles.index') }}"
+                    class="block hover:text-emerald-600 transition-colors">Artikel</a>
             </li>
-            <li><a href="#faq" class="block hover:text-green-700 transition-colors">FAQ</a></li>
+            <li><a href="#faq" class="block hover:text-emerald-600 transition-colors">FAQ</a></li>
         </ul>
     </div>
 </header>

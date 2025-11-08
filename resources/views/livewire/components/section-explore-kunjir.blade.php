@@ -1,7 +1,7 @@
 <section id="explore" class="relative min-h-screen flex items-center justify-center py-20 overflow-hidden">
 
     <div class="absolute inset-0 bg-cover bg-center lg:bg-fixed bg-scroll bg-no-repeat transition-transform duration-700"
-        style="background-image: url('{{ asset('images/coastal2.jpg') }}')">
+        style="background-image: url('{{ asset('images/coastal2.webp') }}')">
     </div>
 
     <div class="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-emerald-900/30"></div>
