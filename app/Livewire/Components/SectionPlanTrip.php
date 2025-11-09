@@ -28,12 +28,6 @@ class SectionPlanTrip extends Component
                 'desc' => 'Jelajahi jalur alami menuju Air Terjun Way Tumbai dan rasakan kesejukan air pegunungan yang jernih.',
             ],
             [
-                'img' => '/images/transportasi.jpg',
-                't' => 'Wisata ke Pulau Mengkudu',
-                'e' => 'Naik perahu menuju Pulau Mengkudu, destinasi eksotis dengan pasir putih dan air sebening kristal.',
-                'desc' => 'Naik perahu menuju Pulau Mengkudu, destinasi eksotis dengan pasir putih dan air sebening kristal.',
-            ],
-            [
                 'img' => '/images/jalantepipantai.jpg',
                 't' => 'Jalan Santai Tepi Pantai',
                 'e' => 'Rasakan semilir angin laut sambil berjalan santai di sepanjang garis pantai yang tenang dan bersih.',
@@ -50,6 +44,12 @@ class SectionPlanTrip extends Component
                 't' => 'Mata Air Panas Kunjir',
                 'e' => 'Kunjir memiliki mata air panas alami yang menyegarkan, sempurna untuk relaksasi setelah hari yang panjang beraktivitas.',
                 'desc' => 'Kunjir memiliki mata air panas alami yang menyegarkan, sempurna untuk relaksasi setelah hari yang panjang beraktivitas.',
+            ],
+            [
+                'img' => '/images/transportasi.jpg',
+                't' => 'Wisata ke Pulau Mengkudu',
+                'e' => 'Naik perahu menuju Pulau Mengkudu, destinasi eksotis dengan pasir putih dan air sebening kristal.',
+                'desc' => 'Naik perahu menuju Pulau Mengkudu, destinasi eksotis dengan pasir putih dan air sebening kristal.',
             ],
             [
                 'img' => '/images/kuliner.jpg',
