@@ -9,7 +9,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Forms\Components\{TextInput, FileUpload, Hidden, MarkdownEditor, Select, DateTimePicker, Grid, View};
 use Filament\Tables\Columns\{TextColumn};
-use Filament\Tables\Actions\{EditAction, DeleteAction, BulkActionGroup, DeleteBulkAction};
+use Filament\Tables\Actions\{EditAction, DeleteAction, BulkActionGroup, DeleteBulkAction, ViewAction};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -140,6 +140,7 @@ class ArticleResource extends Resource
                     ->sortable(),
             ])
             ->actions([
+                ViewAction::make(),
                 EditAction::make()->label('Edit'),
                 DeleteAction::make()
                     ->label('Hapus')

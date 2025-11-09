@@ -10,7 +10,7 @@ class ArticleWidget extends ChartWidget
     protected static ?string $heading = 'Artikel dengan View Terbanyak';
 
     protected static ?string $maxHeight = '300px';
-    protected int | string | array $columnSpan = 1; // Ubah dari 'full' ke 1
+    protected int | string | array $columnSpan = 1;
 
     protected function getData(): array
     {

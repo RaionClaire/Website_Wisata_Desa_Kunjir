@@ -6,11 +6,12 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\{TextInput, FileUpload, Select, Grid};
 use Filament\Tables\Columns\{TextColumn};
 use Illuminate\Support\Facades\Auth;
+use Filament\Tables\Actions\{EditAction, DeleteAction, ViewAction, DeleteBulkAction, BulkActionGroup};
+
 
 class UserResource extends Resource
 {
@@ -97,12 +98,13 @@ class UserResource extends Resource
                     ->sortable(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()->label('Edit'),
-                Tables\Actions\DeleteAction::make()->label('Hapus'),
+                ViewAction::make(),
+                EditAction::make()->label('Edit'),
+                DeleteAction::make()->label('Hapus'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make()->label('Hapus Terpilih'),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make()->label('Hapus Terpilih'),
                 ]),
             ])
             ->defaultSort('created_at', 'desc');
@@ -125,6 +127,7 @@ class UserResource extends Resource
     public static function canAccess(): bool
     {
         $user = Auth::user();
+        /** @var \App\Models\User|\Illuminate\Contracts\Auth\Authenticatable|null $user */
         return $user->hasRole('superadmin');
     }
 }

@@ -60,7 +60,6 @@
         </button>
     </div>
 
-    <!-- Modal -->
     @if ($showModal && $selectedCard)
         <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
             <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 overflow-hidden animate-fadeIn">

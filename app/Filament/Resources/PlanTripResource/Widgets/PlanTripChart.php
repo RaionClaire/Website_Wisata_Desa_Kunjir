@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Filament\Resources\ArticleResource\Widgets;
+namespace App\Filament\Widgets;
 
-use App\Models\Article;
+use App\Models\PlanTrip;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Support\Carbon;
 
-class ArticleMonthlyWidget extends ChartWidget
+class PlanTripChart extends ChartWidget
 {
-    protected static ?string $heading = 'Artikel Diupload 6 Bulan Terakhir';
-
+    protected static ?string $heading = 'Statistik Plan Trip 6 Bulan Terakhir';
     protected static ?string $maxHeight = '300px';
-    protected int | string | array $columnSpan = 1;
+    protected static string $color = 'success';
+    protected int | string | array $columnSpan = 'full';
 
     protected function getData(): array
     {
@@ -21,7 +21,7 @@ class ArticleMonthlyWidget extends ChartWidget
         for ($i = 5; $i >= 0; $i--) {
             $month = Carbon::now()->subMonths($i);
 
-            $count = Article::whereYear('created_at', $month->year)
+            $count = PlanTrip::whereYear('created_at', $month->year)
                 ->whereMonth('created_at', $month->month)
                 ->count();
 
@@ -32,10 +32,10 @@ class ArticleMonthlyWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Jumlah Artikel',
+                    'label' => 'Jumlah Plan Trip',
                     'data' => $data,
-                    'borderColor' => '#0EA5E9',
-                    'backgroundColor' => 'rgba(14, 165, 233, 0.1)',
+                    'borderColor' => '#10B981',
+                    'backgroundColor' => 'rgba(16, 185, 129, 0.15)',
                     'fill' => true,
                     'tension' => 0.4,
                 ],
