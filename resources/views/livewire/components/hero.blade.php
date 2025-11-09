@@ -7,7 +7,13 @@
             style="background-image: url('{{ asset('images/coastal_kunjir.webp') }}');"></div>
 
         <div class="absolute inset-0 bg-cover bg-center animate-fade3"
-            style="background-image: url('{{ asset('images/view_laut_gunung.webp') }}');"></div>
+            style="background-image: url('{{ asset('images/air_terjun2.jpg') }}');"></div>
+        
+        <div class="absolute inset-0 bg-cover bg-center animate-fade4"
+            style="background-image: url('{{ asset('images/jalantepipantai.jpg') }}');"></div>
+
+        <div class="absolute inset-0 bg-cover bg-center animate-fade5" 
+            style="background-image: url('{{ asset('images/mataair.jpg') }}');"></div>
     </div>
 
     <div class="absolute inset-0 bg-black/30 z-10"></div>
