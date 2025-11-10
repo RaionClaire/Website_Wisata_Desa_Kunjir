@@ -47,16 +47,12 @@ class UserResource extends Resource
                     ->required(fn(string $context): bool => $context === 'create')
                     ->helperText('Kosongkan jika tidak ingin mengubah password.'),
 
-                Select::make('role')
+                Select::make('roles')
                     ->label('Peran Pengguna')
-                    ->options([
-                        'superadmin' => 'Super Admin',
-                        'admin' => 'Admin',
-                        'editor' => 'Editor',
-                    ])
-                    ->default('superadmin')
                     ->relationship('roles', 'name')
-                    ->required(),
+                    ->preload()
+                    ->searchable()
+                    ->required()
             ]),
 
             FileUpload::make('avatar')

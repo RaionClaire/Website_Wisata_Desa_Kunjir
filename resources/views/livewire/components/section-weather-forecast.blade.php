@@ -1,12 +1,25 @@
 @php
+    use Illuminate\Support\Facades\Cache;
+    use Illuminate\Support\Facades\Http;
+    use Carbon\Carbon;
+
     $latitude = -5.8355;
     $longitude = 105.6531;
     $url = "https://api.open-meteo.com/v1/forecast?latitude={$latitude}&longitude={$longitude}&hourly=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto&forecast_days=3";
 
+    $cacheKey = 'weather_forecast_kunjir';
+    $cacheDuration = 60 * 60; // 1 jam
+
     try {
-        $response = file_get_contents($url);
-        $weatherData = json_decode($response, true);
-        $hasData = true;
+        // ambil dari cache kalau ada
+        $weatherData = Cache::remember($cacheKey, $cacheDuration, function () use ($url) {
+            $response = Http::timeout(5)->get($url);
+            if ($response->successful()) {
+                return $response->json();
+            }
+            return null;
+        });
+        $hasData = $weatherData !== null;
     } catch (\Exception $e) {
         $hasData = false;
         $weatherData = null;
@@ -31,6 +44,7 @@
         95 => 'Badai Petir',
     ];
 @endphp
+
 
 <section id="weather-forecast" class="relative bg-cover bg-center bg-no-repeat mt-20"
     style="background-image: url('/images/coastal2.webp');">

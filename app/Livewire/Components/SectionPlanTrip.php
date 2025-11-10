@@ -15,7 +15,7 @@ class SectionPlanTrip extends Component
     {
         $this->cards = PlanTrip::latest()->get()->map(function ($trip) {
             return [
-                'img' => asset($trip->image),
+                'img' => asset('storage/' . $trip->image),
                 't' => $trip->title,
                 'e' => $trip->excerpt,
                 'desc' => $trip->description,

@@ -13,7 +13,7 @@ class PlanTripFactory extends Factory
             'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
             'title' => $this->faker->sentence(3),
             'excerpt' => $this->faker->sentence(8),
-            'image' => 'images/kunjir_pantai_1.webp',
+            'image' => 'plan-trips/kunjir_pantai_1.webp',
             'description' => $this->faker->paragraph(4),
         ];
     }

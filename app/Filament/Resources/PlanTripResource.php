@@ -8,7 +8,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\{TextColumn, ImageColumn};
-use Filament\Forms\Components\{TextInput, FileUpload, TextArea};
+use Filament\Forms\Components\{TextInput, FileUpload, Textarea};
 use Filament\Tables\Actions\{EditAction, DeleteAction, ViewAction, DeleteBulkAction};
 use Illuminate\Support\Facades\Auth;
 
@@ -23,24 +23,27 @@ class PlanTripResource extends Resource
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
-            TextInput::make('author')
+            TextInput::make('user_id')
                 ->label('Penulis')
-                ->default(fn() => Auth::user()?->name)
-                ->maxLength(100)
-                ->nullable()
-                ->dehydrated()
-                ->disabled(),
+                ->disabled()
+                ->dehydrated(false)
+                ->formatStateUsing(fn($record) => $record?->user?->name ?? '-'),
+
+
             TextInput::make('title')
                 ->label('Judul')
                 ->required()
                 ->maxLength(200),
+
             TextInput::make('excerpt')
                 ->label('Ringkasan')
                 ->maxLength(255),
+
             FileUpload::make('image')
                 ->label('Gambar')
                 ->image()
                 ->directory('plan-trips'),
+
             Textarea::make('description')
                 ->label('Deskripsi')
                 ->rows(5)

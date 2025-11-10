@@ -19,9 +19,42 @@
         rel="stylesheet">
 
     {{-- Styles / Scripts --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @php
+        $manifestCandidates = [
+            public_path('build/manifest.json'),
+            base_path('public/build/manifest.json'),
+            base_path('../public_html/build/manifest.json'),
+        ];
+
+        $manifestPath = null;
+        foreach ($manifestCandidates as $candidate) {
+            if (file_exists($candidate)) {
+                $manifestPath = $candidate;
+                break;
+            }
+        }
+    @endphp
+
+    @if ($manifestPath)
+        @php
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+        @endphp
+
+        @if (isset($manifest['resources/css/app.css']['file']))
+            <link rel="stylesheet" href="{{ url('build/' . $manifest['resources/css/app.css']['file']) }}">
+        @endif
+
+        @if (isset($manifest['resources/js/app.js']['file']))
+            <script type="module" src="{{ url('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+        @endif
+    @else
+        @viteReactRefresh
+        @vite(['resources/js/app.jsx', 'resources/css/app.css'])
+    @endif
+
     @livewireStyles
 </head>
+
 
 <body class="font-sans text-gray-900 antialiased">
     @include('livewire.components.navbar')
