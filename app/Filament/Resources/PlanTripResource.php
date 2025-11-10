@@ -8,7 +8,7 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\{TextColumn, ImageColumn};
-use Filament\Forms\Components\{TextInput, FileUpload, Select, TextArea};
+use Filament\Forms\Components\{TextInput, FileUpload, TextArea};
 use Filament\Tables\Actions\{EditAction, DeleteAction, ViewAction, DeleteBulkAction};
 use Illuminate\Support\Facades\Auth;
 
@@ -23,10 +23,13 @@ class PlanTripResource extends Resource
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form->schema([
-            Select::make('user_id')
-                ->relationship('user', 'name')
-                ->label('Dibuat oleh')
-                ->required(),
+            TextInput::make('author')
+                ->label('Penulis')
+                ->default(fn() => Auth::user()?->name)
+                ->maxLength(100)
+                ->nullable()
+                ->dehydrated()
+                ->disabled(),
             TextInput::make('title')
                 ->label('Judul')
                 ->required()

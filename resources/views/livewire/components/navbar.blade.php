@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="#faq"
+                <a href="{{ $isHome ? '#faq' : url('/#faq') }}"
                     class="nav-link {{ $isHome ? 'text-white' : 'text-gray-900' }} hover:text-emerald-600 transition-colors duration-300">
                     FAQ
                 </a>
@@ -48,9 +48,9 @@
         <ul class="flex flex-col items-center gap-8 list-none">
             <li><a href="/" class="block hover:text-emerald-600 transition-colors">Beranda</a></li>
             <li><a href="{{ route('articles.index') }}"
-                    class="block hover:text-emerald-600 transition-colors">Artikel</a>
-            </li>
-            <li><a href="#faq" class="block hover:text-emerald-600 transition-colors">FAQ</a></li>
+                    class="block hover:text-emerald-600 transition-colors">Artikel</a></li>
+            <li><a href="{{ $isHome ? '#faq' : url('/#faq') }}"
+                    class="block hover:text-emerald-600 transition-colors">FAQ</a></li>
         </ul>
     </div>
 </header>
